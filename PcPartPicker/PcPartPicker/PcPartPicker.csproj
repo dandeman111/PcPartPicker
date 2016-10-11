@@ -58,6 +58,7 @@
     <Compile Include="Gpu.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Motherboard.cs" />
+    <Compile Include="NvideaGpu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage.cs" />
