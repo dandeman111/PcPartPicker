@@ -21,9 +21,10 @@ namespace PcPartPicker
         public string Brand { get; set; }
         public int Price { get; set; }
         public Socket Socket { get; set;}
+        public string Name { get; internal set; }
 
         //constructor
-        public Cpu(int cpu_id,int clockspeed,int cores,string brand,int price,Socket socket)
+        public Cpu(int cpu_id,int clockspeed,int cores,string brand,int price,Socket socket, string name)
         {
             this.Cpu_id = cpu_id;
             this.Clockspeed = clockspeed;
@@ -31,6 +32,16 @@ namespace PcPartPicker
             this.Brand = brand;
             this.Price = price;
             this.Socket = socket;
+            this.Name = name;
+        }
+        public Cpu( int clockspeed, int cores, string brand, int price, Socket socket, string name)
+        {
+            this.Clockspeed = clockspeed;
+            this.Cores = cores;
+            this.Brand = brand;
+            this.Price = price;
+            this.Socket = socket;
+            this.Name = name;
         }
 
     }

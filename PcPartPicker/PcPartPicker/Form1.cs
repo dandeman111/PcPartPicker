@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PcPartPicker.MSSQLContext;
 
 namespace PcPartPicker
 {
@@ -19,8 +20,10 @@ namespace PcPartPicker
 
         private void test_Click(object sender, EventArgs e)
         {
-            Database db = new Database();
+            Cpu testcpu = new Cpu(1200,1,"inteltest",1200,Socket.LGA1151,"testcpu");
+            MSSQL_Cpu test = new MSSQL_Cpu();
 
+            test.AddCpu(testcpu);
             
         }
     }
