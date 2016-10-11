@@ -47,5 +47,30 @@ namespace PcPartPicker
         {
             dataGridView1.DataSource = aq.querry1();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = aq.querry2();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = aq.querry3();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = aq.querry4();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = aq.querry5();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = aq.querry6();
+        }
     }
 }
