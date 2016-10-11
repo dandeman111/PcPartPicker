@@ -26,5 +26,13 @@ namespace PcPartPicker
             test.AddCpu(testcpu);
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cpu testcpu = new Cpu(7,1200, 1, "inteltest", 1200, Socket.LGA1151, "testcpu");
+            MSSQL_Cpu test = new MSSQL_Cpu();
+
+            test.DeleteCpu(testcpu);
+        }
     }
 }

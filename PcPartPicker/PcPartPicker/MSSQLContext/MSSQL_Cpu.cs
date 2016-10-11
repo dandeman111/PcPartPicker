@@ -17,7 +17,7 @@ namespace PcPartPicker.MSSQLContext
         //methoden
         public void AddCpu(Cpu cpu)
         {
-           string commandString = "USE [DB_PcPartPicker] GO INSERT INTO [dbo].[Cpu]([Clockspeed],[Cores],[Brand],[Price],[Socket],[Name])VALUES < "+ cpu.Clockspeed+" >,< "+cpu.Cores +" >,< "+ cpu.Brand+ " >,< "+ cpu.Price+" >,< "+ cpu.Socket +" >,< "+ cpu.Name+ " >)GO"
+            string commandString = "USE [DB_PcPartPicker] INSERT INTO [dbo].[Cpu]([Clockspeed],[Cores],[Brand],[Price],[Socket],[Name])VALUES ( " + cpu.Clockspeed + " , " + cpu.Cores + " , ' " + cpu.Brand.ToString() + "' , " + cpu.Price + " , '"+ cpu.Socket.ToString() + " ',' " + cpu.Name.ToString() + "' )";
   
             using (SqlCommand command = new SqlCommand(commandString, SqlCon))
             {
@@ -25,6 +25,7 @@ namespace PcPartPicker.MSSQLContext
                 {
                     SqlCon.Open();
                     command.ExecuteNonQuery();
+                    SqlCon.Close();
                 }
                 catch (SqlException e)
                 {
@@ -36,7 +37,21 @@ namespace PcPartPicker.MSSQLContext
 
         public void DeleteCpu(Cpu cpu)
         {
-            throw new NotImplementedException();
+            string commandString = "USE [DB_PcPartPicker] DELETE FROM [dbo].[Cpu] WHERE Cpu_id ="+cpu.Cpu_id ;
+
+            using (SqlCommand command = new SqlCommand(commandString, SqlCon))
+            {
+                try
+                {
+                    SqlCon.Open();
+                    command.ExecuteNonQuery();
+                    SqlCon.Close();
+                }
+                catch (SqlException e)
+                {
+                    System.Console.WriteLine(e);
+                }
+            }
         }
 
         public void EditCpu(Cpu cpu)
