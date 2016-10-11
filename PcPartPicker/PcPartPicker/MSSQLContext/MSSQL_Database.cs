@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace PcPartPicker.MSSQLContext
 {
-    abstract class MSSQL_Database
+   public abstract class MSSQL_Database
     {
 
         protected SqlConnection SqlCon { get; set; }
