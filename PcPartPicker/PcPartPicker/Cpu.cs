@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    public enum Socket
+    public enum Socket //enum voor het socket type van de cpu, is public want het moederboord moet hem ook bij kunnen
     {
          LGA1151,AM3
 
