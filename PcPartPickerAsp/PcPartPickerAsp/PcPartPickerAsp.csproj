@@ -142,6 +142,8 @@
     <Compile Include="DAL\Interface\ICpu.cs" />
     <Compile Include="DAL\Interface\IMemory.cs" />
     <Compile Include="DAL\Interface\IMotherboard.cs" />
+    <Compile Include="DAL\Interface\INvideaGpu.cs" />
+    <Compile Include="DAL\Interface\IStorage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
