@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PcPartPickerAsp.DAL.Models
+﻿namespace PcPartPickerAsp.DAL.Models
 {
     public enum Socket //enum voor het socket type van de cpu, is public want het moederboord moet hem ook bij kunnen
     {
@@ -26,22 +19,22 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         public Cpu(int cpuId,int clockspeed,int cores,string brand,int price,Socket socket, string name)
         {
-            this.CpuId = cpuId;
-            this.Clockspeed = clockspeed;
-            this.Cores = cores;
-            this.Brand = brand;
-            this.Price = price;
-            this.Socket = socket;
-            this.Name = name;
+            CpuId = cpuId;
+            Clockspeed = clockspeed;
+            Cores = cores;
+            Brand = brand;
+            Price = price;
+            Socket = socket;
+            Name = name;
         }
         public Cpu( int clockspeed, int cores, string brand, int price, Socket socket, string name)
         {
-            this.Clockspeed = clockspeed;
-            this.Cores = cores;
-            this.Brand = brand;
-            this.Price = price;
-            this.Socket = socket;
-            this.Name = name;
+            Clockspeed = clockspeed;
+            Cores = cores;
+            Brand = brand;
+            Price = price;
+            Socket = socket;
+            Name = name;
         }
 
     }

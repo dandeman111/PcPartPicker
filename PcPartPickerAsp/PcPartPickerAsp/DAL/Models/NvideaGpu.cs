@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PcPartPickerAsp.DAL.Models
+﻿namespace PcPartPickerAsp.DAL.Models
 {
     public class NvideaGpu : Gpu
     {
@@ -16,9 +10,9 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         public NvideaGpu(int gpuId, int clockspeed, int vram, int price,int sli,bool gsync,bool physx) : base(gpuId, clockspeed, vram, price)
         {
-            this.Sli = sli;
-            this.Gsync = gsync;
-            this.Physx = physx;
+            Sli = sli;
+            Gsync = gsync;
+            Physx = physx;
         }
     }
 }

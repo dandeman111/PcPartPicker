@@ -14,9 +14,9 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         public User(string username,string password,string email)
         {
-            this.Username = username;
-            this.Password = password;
-            this.Email = email;
+            Username = username;
+            Password = password;
+            Email = email;
         }
 
     }

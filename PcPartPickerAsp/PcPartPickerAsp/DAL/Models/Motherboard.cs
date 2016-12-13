@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PcPartPickerAsp.DAL.Models
+﻿namespace PcPartPickerAsp.DAL.Models
 {
     public class Motherboard
     {
@@ -17,10 +11,10 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         public Motherboard(int motherboardId,string chipset,Socket socket, int price)
         {
-            this.MotherboardId = motherboardId;
-            this.Chipset = chipset;
-            this.Socket = socket;
-            this.Price = price;
+            MotherboardId = motherboardId;
+            Chipset = chipset;
+            Socket = socket;
+            Price = price;
         }
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PcPartPickerAsp.DAL.Models;
+﻿using System.Collections.Generic;
 
 namespace PcPartPickerAsp.DAL.Models
 {
@@ -22,7 +17,7 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         public Computer(int computerId)
         {
-            this.ComputerId = computerId;
+            ComputerId = computerId;
         }
 
     }

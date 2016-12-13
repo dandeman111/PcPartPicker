@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PcPartPickerAsp.DAL.Models
+﻿namespace PcPartPickerAsp.DAL.Models
 {
     public abstract class Gpu
     {
@@ -17,10 +11,10 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         protected Gpu(int gpuId,int clockspeed,int vram,int price)
         {
-            this.GpuId = gpuId;
-            this.Clockspeed = clockspeed;
-            this.Vram = vram;
-            this.Price = price;
+            GpuId = gpuId;
+            Clockspeed = clockspeed;
+            Vram = vram;
+            Price = price;
         }
     }
 }

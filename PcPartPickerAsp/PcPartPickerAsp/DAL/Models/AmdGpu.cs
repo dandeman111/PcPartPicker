@@ -1,6 +1,4 @@
-﻿using PcPartPicker;
-
-namespace PcPartPickerAsp.DAL.Models
+﻿namespace PcPartPickerAsp.DAL.Models
 {
     public class AmdGpu : Gpu
     {
@@ -10,7 +8,7 @@ namespace PcPartPickerAsp.DAL.Models
         //constructor
         public AmdGpu(int gpuId, int clockspeed, int vram, int price, int crossfire) : base(gpuId, clockspeed, vram, price)
         {
-            this.Crossfire = crossfire;
+            Crossfire = crossfire;
         }
     }
 }
