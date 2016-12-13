@@ -14,7 +14,7 @@ namespace PcPartPickerAsp.DAL.Models
         public  bool Physx { get; set; }
 
         //constructor
-        public NvideaGpu(int gpu_id, int clockspeed, int vram, int price,int sli,bool gsync,bool physx) : base(gpu_id, clockspeed, vram, price)
+        public NvideaGpu(int gpuId, int clockspeed, int vram, int price,int sli,bool gsync,bool physx) : base(gpuId, clockspeed, vram, price)
         {
             this.Sli = sli;
             this.Gsync = gsync;

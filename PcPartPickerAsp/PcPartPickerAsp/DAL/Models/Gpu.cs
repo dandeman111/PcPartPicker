@@ -9,15 +9,15 @@ namespace PcPartPickerAsp.DAL.Models
     public abstract class Gpu
     {
         //properties
-        protected int Gpu_id { get; set; }
+        protected int GpuId { get; set; }
         protected int Clockspeed { get; set; }
         protected int Vram { get; set; }
         protected int Price { get; set; }
 
         //constructor
-        protected Gpu(int gpu_id,int clockspeed,int vram,int price)
+        protected Gpu(int gpuId,int clockspeed,int vram,int price)
         {
-            this.Gpu_id = gpu_id;
+            this.GpuId = gpuId;
             this.Clockspeed = clockspeed;
             this.Vram = vram;
             this.Price = price;

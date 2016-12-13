@@ -10,7 +10,7 @@ namespace PcPartPickerAsp.DAL.Models
     public class Computer
     {
         //properties
-        public int Computer_id { get; set; }
+        public int ComputerId { get; set; }
         public Cpu Cpu { get; set; }
         public Motherboard Motherboard { get; set; }
         public Memory Memory { get; set; }
@@ -20,9 +20,9 @@ namespace PcPartPickerAsp.DAL.Models
         public int Price { get; set; }
 
         //constructor
-        public Computer(int computer_id)
+        public Computer(int computerId)
         {
-            this.Computer_id = computer_id;
+            this.ComputerId = computerId;
         }
 
     }
