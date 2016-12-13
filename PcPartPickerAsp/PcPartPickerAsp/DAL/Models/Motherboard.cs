@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcPartPicker
+namespace PcPartPickerAsp.DAL.Models
 {
     public class Motherboard
     {

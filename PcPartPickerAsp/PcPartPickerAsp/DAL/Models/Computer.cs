@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PcPartPickerAsp.DAL.Models;
 
-namespace PcPartPicker
+namespace PcPartPickerAsp.DAL.Models
 {
     public class Computer
     {

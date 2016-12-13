@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PcPartPicker
+namespace PcPartPickerAsp.DAL.Models
 {
     public enum Socket //enum voor het socket type van de cpu, is public want het moederboord moet hem ook bij kunnen
     {
