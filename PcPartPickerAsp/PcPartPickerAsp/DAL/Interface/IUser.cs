@@ -6,7 +6,7 @@ namespace PcPartPickerAsp.DAL.Interface
     public interface IUser
     {
         void Add(User user);
-        User GetById(int id);
+        User GetByUsername(string username);
         List<User> GetAll();
         void Update(User user);
         void Delete(User user);

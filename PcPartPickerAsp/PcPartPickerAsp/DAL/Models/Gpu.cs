@@ -1,6 +1,4 @@
-﻿using System.Web.Mvc.Html;
-
-namespace PcPartPickerAsp.DAL.Models
+﻿namespace PcPartPickerAsp.DAL.Models
 {
     public abstract class Gpu
     {

@@ -10,6 +10,7 @@ namespace PcPartPickerAsp.DAL.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public List<Computer> Computers{ get;set;}
+        
 
         //constructor
         public User(string username,string password,string email)
