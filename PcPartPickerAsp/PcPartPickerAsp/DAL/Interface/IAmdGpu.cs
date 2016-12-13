@@ -7,7 +7,7 @@ using PcPartPicker;
 
 namespace PcPartPickerAsp.DAL.Interface
 {
-    interface IAmdGpu
+    public interface IAmdGpu
     {
         void Add(AmdGpu amdGpu);
         AmdGpu GetById(int id);

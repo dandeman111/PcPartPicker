@@ -7,7 +7,7 @@ using PcPartPicker;
 
 namespace PcPartPickerAsp.DAL.Interface
 {
-    interface IMotherboard
+    public interface IMotherboard
     {
         void Add(Motherboard motherboard);
         Motherboard GetById(int id);

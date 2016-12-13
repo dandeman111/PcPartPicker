@@ -7,7 +7,7 @@ using PcPartPicker;
 
 namespace PcPartPickerAsp.DAL.Interface
 {
-    interface IMemory
+    public interface IMemory
     {
         void Add( Memory memory);
         Memory GetById(int id);

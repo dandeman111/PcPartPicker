@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    class User
+    public class User
     {
         //properties
         public string Username { get; set; }

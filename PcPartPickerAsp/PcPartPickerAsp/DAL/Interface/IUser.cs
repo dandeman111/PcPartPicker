@@ -7,7 +7,7 @@ using PcPartPicker;
 
 namespace PcPartPickerAsp.DAL.Interface
 {
-    interface IUser
+    public interface IUser
     {
         void Add(User user);
         User GetById(int id);

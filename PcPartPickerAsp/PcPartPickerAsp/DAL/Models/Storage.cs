@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    class Storage
+    public class Storage
     {
         //properties
         public int Storage_id { get; set; }

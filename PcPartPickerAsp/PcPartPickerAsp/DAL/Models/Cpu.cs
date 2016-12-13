@@ -12,7 +12,7 @@ namespace PcPartPicker
          LGA1151,AM3
 
     };
-   public  class Cpu
+    public class Cpu
     {
         //properties
         public int Cpu_id { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    class Memory
+    public class Memory
     {
         //properties
         public int Memory_id { get; set; }

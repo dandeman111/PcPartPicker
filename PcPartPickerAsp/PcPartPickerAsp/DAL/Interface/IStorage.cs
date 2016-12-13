@@ -7,7 +7,7 @@ using PcPartPicker;
 
 namespace PcPartPickerAsp.DAL.Interface
 {
-    interface IStorage
+    public interface IStorage
     {
         void Add(Storage storage);
         Storage GetById(int id);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    class NvideaGpu : Gpu
+    public class NvideaGpu : Gpu
     {
         //properties
         public int Sli { get; set; }

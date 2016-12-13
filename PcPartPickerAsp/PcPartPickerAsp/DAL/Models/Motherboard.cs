@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    class Motherboard
+    public class Motherboard
     {
         //properties
         public int Motherboard_id { get; set; }

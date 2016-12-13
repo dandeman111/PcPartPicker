@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    abstract class Gpu
+    public abstract class Gpu
     {
         //properties
         protected int Gpu_id { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PcPartPicker
 {
-    class AmdGpu : Gpu
+    public class AmdGpu : Gpu
     {
         //properties
         public int Crossfire { get; private set; }
