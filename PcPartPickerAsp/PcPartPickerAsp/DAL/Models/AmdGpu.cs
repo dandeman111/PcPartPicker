@@ -6,7 +6,7 @@
         public int Crossfire { get; private set; }
 
         //constructor
-        public AmdGpu(int gpuId, int clockspeed, int vram, int price, int crossfire) : base(gpuId, clockspeed, vram, price)
+        public AmdGpu(int gpuId, int clockspeed, int vram, int price,string name, int crossfire) : base(gpuId, clockspeed, vram, price , name)
         {
             Crossfire = crossfire;
         }
