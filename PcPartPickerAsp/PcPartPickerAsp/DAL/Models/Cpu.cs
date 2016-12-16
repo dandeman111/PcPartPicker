@@ -15,6 +15,7 @@
         public int Price { get; set; }
         public Socket Socket { get; set;}
         public string Name { get; internal set; }
+        
 
         //constructor
         public Cpu(int cpuId,int clockspeed,int cores,string brand,int price,Socket socket, string name)

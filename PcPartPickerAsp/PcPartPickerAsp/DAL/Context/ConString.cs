@@ -12,7 +12,7 @@ namespace PcPartPickerAsp.DAL.Context
 
         public ConString()
         {
-            Constring = "Data Source = DANNY - LAPTOP; Initial Catalog = DB_PcPartPicker; Integrated Security = True";
+            Constring = "Data Source=DANNY-LAPTOP;Initial Catalog=DB_PcPartPicker;Integrated Security=True";
         }
     }
 }

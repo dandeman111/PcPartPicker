@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PcPartPicker;
+using PcPartPickerAsp.DAL.Models;
 
 namespace PcPartPickerAsp.DAL.Interface
 {

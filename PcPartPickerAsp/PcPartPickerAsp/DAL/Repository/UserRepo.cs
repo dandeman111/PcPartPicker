@@ -44,5 +44,19 @@ namespace PcPartPickerAsp.DAL.Repository
         {
             throw new NotImplementedException();
         }
+
+        public User Login(string password, string email)
+        {
+            List<User> users = this.GetAll();
+
+            foreach (var user in users)
+            {
+                if (user.Email == email && user.Password == password)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -10,7 +10,7 @@
         public string Name { get; private set; }
 
         //constructor
-        protected Gpu(int gpuId,int clockspeed,int vram,int price ,string name)
+        protected Gpu(string name, int gpuId, int clockspeed, int vram, int price)
         {
             GpuId = gpuId;
             Clockspeed = clockspeed;

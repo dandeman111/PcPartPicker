@@ -19,10 +19,12 @@ namespace PcPartPickerAsp.Controllers
         {
             if(email == null || password == null)
             {
-                return View();
+               return View();
             }
             else
             {
+                Session["username"] = UserRepo.Login(password, email).Username;
+                Session["email"] = UserRepo.Login(password, email).Email;
                 return Redirect("~/Home");
             }
         }

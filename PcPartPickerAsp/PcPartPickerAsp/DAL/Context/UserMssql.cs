@@ -52,8 +52,8 @@ namespace PcPartPickerAsp.DAL.Context
             List<User> users = new List<User>();
             using (SqlConnection con = new SqlConnection(Constring))
             {
-
-                SqlCommand cmd = new SqlCommand("select * from User ", con);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from [User] ", con);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())

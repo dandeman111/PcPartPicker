@@ -19,8 +19,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("PcPartPicker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+               
 
-              
 
 
             </div>
@@ -29,8 +29,20 @@
                     <li>@Html.ActionLink("Builds", "Index", "Home")</li>
 
                     <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                    
                 </ul>
+                <div class="navbar-right">
+                    @if (Session["username"] != null)
+            {
+                        @Html.ActionLink(Session["username"].ToString(), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    }
+                </div>
             </div>
+            
+
+
+
+            
         </div>
     </div>
 

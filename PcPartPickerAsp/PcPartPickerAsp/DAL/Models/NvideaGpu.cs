@@ -8,7 +8,7 @@
         public  bool Physx { get; set; }
 
         //constructor
-        public NvideaGpu(int gpuId, int clockspeed, int vram, int price,int sli,bool gsync,bool physx) : base(gpuId, clockspeed, vram, price)
+        public NvideaGpu(string name,int gpuId, int clockspeed, int vram, int price,int sli,bool gsync,bool physx) : base(name , gpuId,clockspeed,vram,price)
         {
             Sli = sli;
             Gsync = gsync;
