@@ -33,8 +33,9 @@
                 </ul>
                 <div class="navbar-right">
                     @if (Session["username"] != null)
-            {
+                    {
                         @Html.ActionLink(Session["username"].ToString(), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        @Html.ActionLink("Uitloggen","Logout" , "Login", new { area = "" }, new { @class = "navbar-brand" })
                     }
                 </div>
             </div>

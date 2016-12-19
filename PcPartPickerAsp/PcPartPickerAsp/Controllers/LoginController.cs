@@ -33,5 +33,11 @@ namespace PcPartPickerAsp.Controllers
             
             return Redirect("~/Home");
         }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return Redirect("~/Home");
+        }
     }
 }
