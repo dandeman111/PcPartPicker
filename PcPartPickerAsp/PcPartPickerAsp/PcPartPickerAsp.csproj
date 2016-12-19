@@ -140,6 +140,7 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DAL\Context\AmdGpuMssql.cs" />
     <Compile Include="DAL\Context\ConString.cs" />
+    <Compile Include="DAL\Context\CpuMssql.cs" />
     <Compile Include="DAL\Context\UserMssql.cs" />
     <Compile Include="DAL\Interface\IAmdGpu.cs" />
     <Compile Include="DAL\Interface\ICpu.cs" />
@@ -148,6 +149,12 @@
     <Compile Include="DAL\Interface\INvideaGpu.cs" />
     <Compile Include="DAL\Interface\IStorage.cs" />
     <Compile Include="DAL\Interface\IUser.cs" />
+    <Compile Include="DAL\Repository\AmdGpuRepo.cs" />
+    <Compile Include="DAL\Repository\CpuRepo.cs" />
+    <Compile Include="DAL\Repository\MemoryRepo.cs" />
+    <Compile Include="DAL\Repository\MotherboardRepo.cs" />
+    <Compile Include="DAL\Repository\NvideaGpuRepo.cs" />
+    <Compile Include="DAL\Repository\StorageRepo.cs" />
     <Compile Include="DAL\Repository\UserRepo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
