@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Data.SqlClient;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
@@ -11,17 +10,56 @@ namespace PcPartPickerAsp.DAL.Context
     {
         public void Add(Cpu cpu)
         {
-            
+            throw new NotImplementedException();
         }
 
         public Cpu GetById(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(Constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select * from Cpu where Cpu_id = @id", con))
+                {
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    return new Cpu(Convert.ToInt16(reader["Cpu_id"]),
+                        Convert.ToInt16(reader["Clockspeed"]),
+                        Convert.ToInt16(reader["Cores"]),
+                        Convert.ToString(reader["Brand"]),
+                        Convert.ToInt16(reader["Price"]),
+                        Convert.ToString(reader["Socket"]),
+                        Convert.ToString(reader["Name"]));
+
+
+
+                }
+            }
         }
 
         public List<Cpu> GetAll()
         {
-            throw new NotImplementedException();
+            List<Cpu> users = new List<Cpu>();
+            using (SqlConnection con = new SqlConnection(Constring))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from [Cpu] ", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    users.Add(new Cpu(Convert.ToInt16(reader["Cpu_id"]),
+                        Convert.ToInt16(reader["Clockspeed"]),
+                        Convert.ToInt16(reader["Cores"]),
+                        Convert.ToString(reader["Brand"]),
+                        Convert.ToInt16(reader["Price"]),
+                        Convert.ToString(reader["Socket"]),
+                        Convert.ToString(reader["Name"])));
+                }
+
+            }
+            return users;
         }
 
         public void Update(Cpu cpu)

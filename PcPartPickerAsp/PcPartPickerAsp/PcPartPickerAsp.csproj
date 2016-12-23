@@ -141,6 +141,10 @@
     <Compile Include="DAL\Context\AmdGpuMssql.cs" />
     <Compile Include="DAL\Context\ConString.cs" />
     <Compile Include="DAL\Context\CpuMssql.cs" />
+    <Compile Include="DAL\Context\MemoryMssql.cs" />
+    <Compile Include="DAL\Context\MotherboardMssql.cs" />
+    <Compile Include="DAL\Context\NvideaGpuMssql.cs" />
+    <Compile Include="DAL\Context\StorageMssql.cs" />
     <Compile Include="DAL\Context\UserMssql.cs" />
     <Compile Include="DAL\Interface\IAmdGpu.cs" />
     <Compile Include="DAL\Interface\ICpu.cs" />

@@ -13,12 +13,12 @@
         public int Cores { get; set; }
         public string Brand { get; set; }
         public int Price { get; set; }
-        public Socket Socket { get; set;}
+        public string Socket { get; set;}
         public string Name { get; internal set; }
         
 
         //constructor
-        public Cpu(int cpuId,int clockspeed,int cores,string brand,int price,Socket socket, string name)
+        public Cpu(int cpuId,int clockspeed,int cores,string brand,int price,string socket, string name)
         {
             CpuId = cpuId;
             Clockspeed = clockspeed;
@@ -28,7 +28,7 @@
             Socket = socket;
             Name = name;
         }
-        public Cpu( int clockspeed, int cores, string brand, int price, Socket socket, string name)
+        public Cpu( int clockspeed, int cores, string brand, int price, string socket, string name)
         {
             Clockspeed = clockspeed;
             Cores = cores;
