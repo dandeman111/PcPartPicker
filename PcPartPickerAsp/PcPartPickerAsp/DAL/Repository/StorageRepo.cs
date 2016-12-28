@@ -10,6 +10,11 @@ namespace PcPartPickerAsp.DAL.Repository
     public class StorageRepo
     {
         public IStorage Context { get; private set; }
+
+        public StorageRepo(IStorage storageContext)
+        {
+            Context = storageContext;
+        }
         public void Add(Storage storage)
         {
             throw new NotImplementedException();

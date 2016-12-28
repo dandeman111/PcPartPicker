@@ -10,6 +10,11 @@ namespace PcPartPickerAsp.DAL.Repository
     public class MotherboardRepo
     {
         public IMotherboard Context { get; private set; }
+
+        public MotherboardRepo(IMotherboard motherboardContext)
+        {
+            Context = motherboardContext;
+        }
         public void Add(Motherboard motherboard)
         {
             throw new NotImplementedException();

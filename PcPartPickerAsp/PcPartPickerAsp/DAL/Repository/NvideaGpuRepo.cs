@@ -10,6 +10,11 @@ namespace PcPartPickerAsp.DAL.Repository
     public class NvideaGpuRepo
     {
         public INvideaGpu Context { get; private set; }
+
+        public NvideaGpuRepo(INvideaGpu nvideaGpuContext)
+        {
+            Context = nvideaGpuContext;
+        }
         public void Add(NvideaGpu nvideaGpu)
         {
             throw new NotImplementedException();

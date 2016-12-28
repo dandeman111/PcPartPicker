@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using PcPartPickerAsp.DAL.Context;
+using PcPartPickerAsp.DAL.Repository;
 
 namespace PcPartPickerAsp.DAL.Models
 {
@@ -14,10 +16,13 @@ namespace PcPartPickerAsp.DAL.Models
         public List<User> Owner { get; set; }
         public int Price { get; set; }
 
+        private CpuRepo cpuRepo= new CpuRepo();
+
         //constructor
-        public Computer(int computerId)
+        public Computer(int computerId, int cpuId, int motherboardId, int memoryId, int storageId,List<Gpu> gpus, List<User> owners  )
         {
             ComputerId = computerId;
+            Cpu = 
         }
 
     }

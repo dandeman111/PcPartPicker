@@ -10,6 +10,11 @@ namespace PcPartPickerAsp.DAL.Repository
     public class CpuRepo
     {
         public ICpu Context { get; private set; }
+
+        public CpuRepo(ICpu contextCpu)
+        {
+            Context = contextCpu;
+        }
         public void Add(Cpu cpu)
         {
            Context.Add(cpu);

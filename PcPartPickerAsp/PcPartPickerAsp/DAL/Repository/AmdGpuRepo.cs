@@ -10,6 +10,11 @@ namespace PcPartPickerAsp.DAL.Repository
     public class AmdGpuRepo
     {
         public IAmdGpu Context { get; private set; }
+
+        public AmdGpuRepo(IAmdGpu amdGpuContext)
+        {
+            Context = amdGpuContext;
+        }
         public void Add(AmdGpu amdGpu)
         {
             Context.Add(amdGpu);

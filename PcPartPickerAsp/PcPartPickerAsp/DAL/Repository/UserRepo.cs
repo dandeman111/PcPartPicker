@@ -14,9 +14,9 @@ namespace PcPartPickerAsp.DAL.Repository
         public IUser Context { get; private set; }
 
         //constructor
-        public UserRepo()
+        public UserRepo(IUser userContext)
         {
-            Context = new UserMssql();
+            Context = userContext;
         }
 
         
