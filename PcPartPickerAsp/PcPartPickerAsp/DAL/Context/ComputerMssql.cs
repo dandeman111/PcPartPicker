@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using PcPartPickerAsp.DAL.Interface;
@@ -11,7 +12,8 @@ namespace PcPartPickerAsp.DAL.Context
     {
         public void Add(Computer computer)
         {
-            
+            throw new NotImplementedException();
+#warning ik heb hiervoor een stored procedure aangemaakt
         }
 
         public void Delete(Computer computer)
@@ -26,7 +28,24 @@ namespace PcPartPickerAsp.DAL.Context
 
         public Computer GetById(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(Constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select * from computer where Computer_id = @id", con))
+                {
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    return new Computer(Convert.ToInt16(reader["Computer_id"]),
+                        Convert.ToInt16(reader["Cpu_id"]),
+                        Convert.ToInt16(reader["Motherboard_id"]),
+                        Convert.ToInt16(reader["Memory_id"]),
+                        Convert.ToInt16(reader["Storage_id"]));
+
+
+                }
+            }
         }
 
         public void Update(Computer computer)
