@@ -23,7 +23,24 @@ namespace PcPartPickerAsp.DAL.Context
 
         public List<Computer> GetAll()
         {
-            throw new NotImplementedException();
+            List<Computer> computers = new List<Computer>();
+            using (SqlConnection con = new SqlConnection(Constring))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from [computer] ", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    computers.Add(new Computer(Convert.ToInt16(reader["Computer_id"]),
+                        Convert.ToInt16(reader["Cpu_id"]),
+                        Convert.ToInt16(reader["Motherboard_id"]),
+                        Convert.ToInt16(reader["Memory_id"]),
+                        Convert.ToInt16(reader["Storage_id"])));
+                }
+
+            }
+            return computers;
         }
 
         public Computer GetById(int id)

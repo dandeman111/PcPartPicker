@@ -157,6 +157,7 @@
     <Compile Include="DAL\Interface\IStorage.cs" />
     <Compile Include="DAL\Interface\IUser.cs" />
     <Compile Include="DAL\Repository\AmdGpuRepo.cs" />
+    <Compile Include="DAL\Repository\ComputerRepo.cs" />
     <Compile Include="DAL\Repository\CpuRepo.cs" />
     <Compile Include="DAL\Repository\MemoryRepo.cs" />
     <Compile Include="DAL\Repository\MotherboardRepo.cs" />

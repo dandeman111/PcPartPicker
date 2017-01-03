@@ -7,7 +7,7 @@ using PcPartPickerAsp.DAL.Models;
 
 namespace PcPartPickerAsp.DAL.Interface
 {
-    interface IComputer
+    public interface IComputer
     {
         void Add(Computer computer);
         Computer GetById(int id);
