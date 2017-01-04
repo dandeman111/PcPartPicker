@@ -19,17 +19,24 @@ namespace PcPartPickerAsp.DAL.Context
         {
             using (SqlConnection con = new SqlConnection(Constring))
             {
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand("Select * from Motherboard where Motherboard_id = @id", con))
                 {
-
+                    Motherboard m;
+                    m = null;
                     cmd.Parameters.AddWithValue("@id", id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
-
-                    return new Motherboard(Convert.ToInt16(reader["Motherboard_id"]),
-                        Convert.ToString("Chipset"),
-                        Convert.ToString("Socket"),
-                        Convert.ToInt16("Price"));
+                    if (reader.Read())
+                    {
+                        int x = Convert.ToInt16(reader["Motherboard_id"]);
+                        string cs = Convert.ToString(reader["Chipset"]);
+                        string socket = Convert.ToString(reader["Socket"]);
+                        int p = Convert.ToInt16(reader["Price"]);
+                        string name = Convert.ToString(reader["Name"]);
+                        m = new Motherboard(x,cs,socket,p,name);
+                    }
+                    return m;
 
 
 
@@ -52,7 +59,8 @@ namespace PcPartPickerAsp.DAL.Context
                         Convert.ToInt16(reader["Motherboard_id"]),
                         Convert.ToString("Chipset"),
                         Convert.ToString("Socket"),
-                        Convert.ToInt16("Price")));
+                        Convert.ToInt16("Price"),
+                        Convert.ToString(reader["Name"])));
                 }
 
             }

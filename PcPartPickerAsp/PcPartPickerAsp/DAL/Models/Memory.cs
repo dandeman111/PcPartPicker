@@ -8,13 +8,16 @@
         public string Type { get; set; }
         public int Price { get; set; }
 
+        public string Name { get; set; }
+
         //constructor
-        public Memory(int memoryId,int clockspeed, string type,int price)
+        public Memory(int memoryId,int clockspeed, string type,int price, string name)
         {
             MemoryId = memoryId;
             Clockspeed = clockspeed;
             Type = type;
             Price = price;
+            Name = name;
         }
     }
 }

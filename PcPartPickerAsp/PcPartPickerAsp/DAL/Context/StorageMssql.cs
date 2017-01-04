@@ -19,6 +19,7 @@ namespace PcPartPickerAsp.DAL.Context
         {
             using (SqlConnection con = new SqlConnection(Constring))
             {
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand("Select * from Storage where Storage_id = @id", con))
                 {
 
@@ -26,10 +27,21 @@ namespace PcPartPickerAsp.DAL.Context
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    return new Storage(Convert.ToInt16(reader["Storage_id"]),
-                        Convert.ToInt16(reader["Speed"]),
-                        Convert.ToString(reader["Interface"]),
-                        Convert.ToInt16(reader["Price"]));
+                    if (reader.Read())
+                    {
+                        return new Storage(Convert.ToInt16(reader["Storage_id"]),
+                            Convert.ToString(reader["Speed"]),
+                            Convert.ToString(reader["Interface"]),
+                            Convert.ToInt16(reader["Price"]),
+                            Convert.ToString(reader["Name"]));
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                       
+                    
+
 
 
 
@@ -49,9 +61,10 @@ namespace PcPartPickerAsp.DAL.Context
                 while (reader.Read())
                 {
                     storages.Add(new Storage(Convert.ToInt16(reader["Storage_id"]),
-                        Convert.ToInt16(reader["Speed"]),
+                        Convert.ToString(reader["Speed"]),
                         Convert.ToString(reader["Interface"]),
-                        Convert.ToInt16(reader["Price"])));
+                        Convert.ToInt16(reader["Price"]),
+                        Convert.ToString(reader["Name"])));
                 }
 
             }

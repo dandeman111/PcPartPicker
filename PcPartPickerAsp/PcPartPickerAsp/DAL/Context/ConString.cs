@@ -14,5 +14,16 @@ namespace PcPartPickerAsp.DAL.Context
         {
             Constring = "Data Source=DANNY-LAPTOP;Initial Catalog=DB_PcPartPicker;Integrated Security=True";
         }
+
+        protected static String GetString(Object o)
+        {
+            if (o == DBNull.Value) return null;
+            return (String)o;
+        }
+        protected static int? GetInt(Object o)
+        {
+            if (o == DBNull.Value) return null;
+            return (int?)o;
+        }
     }
 }

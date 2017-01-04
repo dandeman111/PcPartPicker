@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PcPartPickerAsp.DAL.Context;
 using PcPartPickerAsp.DAL.Repository;
 
@@ -23,20 +24,21 @@ namespace PcPartPickerAsp.DAL.Models
         private UserRepo user = new UserRepo(new UserMssql());
 #warning nog geen gpu's gefixt
         //constructor
-        public Computer(int computerId, int cpuId, int motherboardId, int memoryId, int storageId  )
+        public Computer(int computerId, int cpuId, int motherboardId, int memoryId, int storageId,List<string> users  )
         {
             ComputerId = computerId;
-            Cpu = cpuRepo.GetById(cpuId);
-            Motherboard = motherboardRepo.GetById(cpuId);
+
+            Cpu = cpuRepo.GetById(Convert.ToInt16(cpuId));
+            Motherboard = motherboardRepo.GetById(motherboardId);
             Memory = memoryRepo.GetById(memoryId);
             Storage = storageRepo.GetById(storageId);
 
-            //List<User> users = new List<User>();
-            //foreach (var x in owners)
-            //{
-            //    users.Add(x);
-            //}
-            //Owner = users;
+            Owner = new List<User>();
+            foreach (var x in users)
+            {
+                
+            }
+            
 
 
 

@@ -17,20 +17,26 @@ namespace PcPartPickerAsp.DAL.Context
         {
             using (SqlConnection con = new SqlConnection(Constring))
             {
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand("Select * from Cpu where Cpu_id = @id", con))
                 {
-
+                    Cpu c;
+                    c = null;
                     cmd.Parameters.AddWithValue("@id", id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
-
-                    return new Cpu(Convert.ToInt16(reader["Cpu_id"]),
+                    if (reader.Read())
+                    {
+                        c = new Cpu(Convert.ToInt16(reader["Cpu_id"]),
                         Convert.ToInt16(reader["Clockspeed"]),
                         Convert.ToInt16(reader["Cores"]),
                         Convert.ToString(reader["Brand"]),
                         Convert.ToInt16(reader["Price"]),
                         Convert.ToString(reader["Socket"]),
                         Convert.ToString(reader["Name"]));
+                    }
+                    
+                    return c;
 
 
 

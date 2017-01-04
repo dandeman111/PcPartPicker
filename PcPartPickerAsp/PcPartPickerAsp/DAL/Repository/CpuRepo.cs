@@ -22,7 +22,7 @@ namespace PcPartPickerAsp.DAL.Repository
 
         public Cpu GetById(int id)
         {
-            throw new NotImplementedException();
+            return Context.GetById(id);
         }
 
         public List<Cpu> GetAll()

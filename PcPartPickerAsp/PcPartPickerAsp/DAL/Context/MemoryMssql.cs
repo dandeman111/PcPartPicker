@@ -17,8 +17,10 @@ namespace PcPartPickerAsp.DAL.Context
 
         public Memory GetById(int id)
         {
+            
             using (SqlConnection con = new SqlConnection(Constring))
             {
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand("Select * from Memory where Memory_id = @id", con))
                 {
 
@@ -26,11 +28,20 @@ namespace PcPartPickerAsp.DAL.Context
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    return new Memory(Convert.ToInt16(reader["Memory_id"]),
-                        Convert.ToInt16(reader["Clockspeed"]),
-                        Convert.ToString(reader["Type"]),
-                        Convert.ToInt16(reader["Price"]));
-
+                    if (reader.Read())
+                    {
+                        return new Memory(Convert.ToInt16(reader["Memory_id"]),
+                          Convert.ToInt16(reader["Clockspeed"]),
+                          Convert.ToString(reader["Type"]),
+                          Convert.ToInt16(reader["Price"]),
+                          Convert.ToString(reader["Name"]));
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    
+                    
 
 
                 }
@@ -51,7 +62,8 @@ namespace PcPartPickerAsp.DAL.Context
                     mems.Add(new Memory(Convert.ToInt16(reader["Memory_id"]),
                         Convert.ToInt16(reader["Clockspeed"]),
                         Convert.ToString(reader["Type"]),
-                        Convert.ToInt16(reader["Price"])));
+                        Convert.ToInt16(reader["Price"]),
+                        Convert.ToString(reader["Name"])));
                 }
 
             }

@@ -29,17 +29,29 @@ namespace PcPartPickerAsp.DAL.Context
         {
             using (SqlConnection con = new SqlConnection(Constring))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * from gpu Join Amd on Amd.Gpu_id = Gpu.Gpu_id Where Gpu.Gpu_id = @GpuId", con))
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("Select * from [User] left join[User_computer]on User_computer.Username = [User].Username where [User].Username = @Username", con))
                 {
-
+                    string un = null;
+                    string pw = null;
+                    string em = null;
+                    List<int> pcs = new List<int>();
                     cmd.Parameters.AddWithValue("@Username", username);
 
                     SqlDataReader reader = cmd.ExecuteReader();
-
+                    while (reader.Read())
+                    {
+                         un = Convert.ToString(reader["Username"]);
+                        pw = Convert.ToString(reader["Password"]);
+                        em = Convert.ToString(reader["Email"]);
+                        pcs.Add(Convert.ToInt16(GetInt(reader["Computer_id"])));
+#warning als het NULL is returned het een 0
+                    }
                     return new User(
-                        Convert.ToString(reader["Username"]),
-                        Convert.ToString(reader["Password"]),
-                        Convert.ToString(reader["Email"])
+                        un,
+                        pw,
+                        em,
+                        pcs
                         );
 
 
@@ -53,17 +65,20 @@ namespace PcPartPickerAsp.DAL.Context
             using (SqlConnection con = new SqlConnection(Constring))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select * from [User] ", con);
+                SqlCommand cmd = new SqlCommand("Select * from [User] left join[User_computer]on User_computer.Username = [User].Username", con);
                 SqlDataReader reader = cmd.ExecuteReader();
-
+                
+                List<string> usernames = new List<string>();
                 while (reader.Read())
                 {
-                    users.Add(new User(
-                        Convert.ToString(reader["Username"]),
-                        Convert.ToString(reader["Password"]),
-                        Convert.ToString(reader["Email"])
-                        ));
+                    usernames.Add(Convert.ToString(reader["Username"]));
+
                 }
+                foreach (string un in usernames)
+                {
+                   users.Add(GetByUsername(un));
+                }
+
 
             }
             return users;

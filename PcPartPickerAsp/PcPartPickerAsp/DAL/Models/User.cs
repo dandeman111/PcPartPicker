@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using PcPartPickerAsp.DAL.Context;
+using PcPartPickerAsp.DAL.Repository;
 
 
 namespace PcPartPickerAsp.DAL.Models
@@ -13,11 +15,17 @@ namespace PcPartPickerAsp.DAL.Models
         
 
         //constructor
-        public User(string username,string password,string email)
+        public User(string username,string password,string email, List<int> computers )
         {
+            Computers = new List<Computer>();
+            ComputerRepo cr = new ComputerRepo(new ComputerMssql());
             Username = username;
             Password = password;
             Email = email;
+            foreach (int x in computers)
+            {
+                Computers.Add(cr.GetById(x));
+            }
         }
 
     }

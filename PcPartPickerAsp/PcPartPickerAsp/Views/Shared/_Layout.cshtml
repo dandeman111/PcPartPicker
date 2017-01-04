@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.ServiceModel.Security
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,14 +27,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Comunity builds", "Builds", "Build")</li>*@
+                    <li>@Html.ActionLink("Comunity builds", "Builds", "Build")</li>
                     @if (Session["username"] == null)
                     {
                         <li>@Html.ActionLink("Login", "Index", "Login")</li>
+
                     }
                     else
                     {
-                        <li>@Html.ActionLink("My builds", "Builds", "Build")</li>
+                        <li>@Html.ActionLink("My builds", "MyBuilds", "Build",new {username = Session["Username"].ToString()}, null )</li>
                         <li>@Html.ActionLink("New Build", "Index", "Login")</li>
                     }
 

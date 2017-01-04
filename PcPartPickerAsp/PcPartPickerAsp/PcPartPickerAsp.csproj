@@ -192,6 +192,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Build\Builds.cshtml" />
+    <Content Include="Views\Build\ShowBuild.cshtml" />
+    <Content Include="Views\Build\MyBuilds.cshtml" />
+    <Content Include="Views\Build\EditBuild.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
