@@ -1,4 +1,5 @@
-﻿@model PcPartPickerAsp.DAL.ViewModels.CpuViewModel
+﻿@using PcPartPickerAsp.DAL.Models
+@model PcPartPickerAsp.Views.CpuViewModel
 @{
     ViewBag.Title = "Cpu";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +7,51 @@
 
 <h2>Cpu</h2>
 
+<div class="container">
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Clock speed</th>
+                        <th>Cores</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Socket</th>
+                    </tr>
+                </thead>
+
+                <tbody id="myTable">
+                  @foreach (Cpu c in @Model.AllCpus)
+                  {
+                      if (c.Socket == Model.CurrentBuild.Motherboard.Socket) //kijkt of de cpu compitabel is met het moederbord
+                      {
+                          <tr>
+                              <td>@c.Name</td>
+                              <td>@c.Clockspeed</td>
+                              <td>@c.Cores</td>
+                              <td>@c.Brand</td>
+                              <td>@c.Price</td>
+                              <td>@c.Socket</td>
+                              <td>
+                                  @using (Html.BeginForm("EditCpu", "Build"))
+                                  {    
+                                      @Html.AntiForgeryToken()
+                                      @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
+                                      @Html.Hidden("cpuId", c.CpuId)
+                                      <input type="submit" value="Pick" class="btn btn-default" /> 
+                                  }
+                              </td>
+                          </tr>
+                      }
+                  }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12 text-center">
+            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+        </div>
+    </div>
+</div>

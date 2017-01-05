@@ -91,7 +91,24 @@ namespace PcPartPickerAsp.DAL.Context
 
         public void Update(Computer computer)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(Constring))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("Update Computer set Cpu_id = @cpuid,Motherboard_id = @motherboardId, Memory_id = @memoryid, Storage_id = @storageid, Price = @price where Computer_id = @computerid", con))
+                {
+
+                    cmd.Parameters.AddWithValue("@computerid",computer.ComputerId );
+                    cmd.Parameters.AddWithValue("@motherboardId", Convert.ToInt16(computer.Motherboard.MotherboardId));
+                    cmd.Parameters.AddWithValue("@memoryid", Convert.ToInt16(computer.Memory.MemoryId));
+                    cmd.Parameters.AddWithValue("@storageid", Convert.ToInt16(computer.Storage.StorageId));
+                    cmd.Parameters.AddWithValue("@Price", Convert.ToInt32(computer.Price));
+                    cmd.Parameters.AddWithValue("@cpuid", computer.Cpu.CpuId);
+
+                    cmd.ExecuteNonQuery();
+
+
+                }
+            }
         }
     }
 }

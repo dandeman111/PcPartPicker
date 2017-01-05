@@ -17,7 +17,7 @@ namespace PcPartPickerAsp.Controllers
             ComputerRepo cr = new ComputerRepo(new ComputerMssql());
             CpuRepo cp = new CpuRepo(new CpuMssql());
             CpuViewModel cvm = new CpuViewModel(cr.GetById(computerId),cp.GetAll());
-            return View();
+            return View(cvm);
         }
     }
 }

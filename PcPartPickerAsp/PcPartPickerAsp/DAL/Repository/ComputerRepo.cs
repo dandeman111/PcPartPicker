@@ -33,7 +33,7 @@ namespace PcPartPickerAsp.DAL.Repository
 
         public void Update(Computer computer)
         {
-            throw new NotImplementedException();
+            Context.Update(computer);
         }
 
         public void Delete(Computer computer)
