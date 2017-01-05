@@ -20,21 +20,29 @@ namespace PcPartPickerAsp.DAL.Context
         {
             using (SqlConnection con = new SqlConnection(Constring))
             {
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand("Select * from gpu Join Nvidea on Nvidea.Gpu_id = Gpu.Gpu_id Where Gpu.Gpu_id = @GpuId", con))
                 {
 
                     cmd.Parameters.AddWithValue("@GpuId", id);
 
                     SqlDataReader reader = cmd.ExecuteReader();
-
-                    return new NvideaGpu(Convert.ToString("Name"),
-                        Convert.ToInt16(reader["GpuId"]),
-                         Convert.ToInt16(reader["Clockspeed"]),
-                         Convert.ToInt16(reader["Vram"]),
-                         Convert.ToInt16(reader["Price"]),
-                         Convert.ToInt16(reader["Sli"]),
-                         Convert.ToBoolean(reader["gsync"]),
-                         Convert.ToBoolean(reader["Physx"]));
+                    if (reader.Read())
+                    {
+                        return new NvideaGpu(Convert.ToString(reader["Name"]),
+                            Convert.ToInt16(reader["Gpu_id"]),
+                            Convert.ToInt16(reader["Clockspeed"]),
+                            Convert.ToInt16(reader["Vram"]),
+                            Convert.ToInt16(reader["Price"]),
+                            Convert.ToInt16(reader["Sli"]),
+                            Convert.ToBoolean(reader["Gsync"]),
+                            Convert.ToBoolean(reader["Physx"]));
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    
 
                     
                 }

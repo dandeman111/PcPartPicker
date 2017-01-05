@@ -138,11 +138,13 @@
     <Compile Include="Controllers\BuildController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PartController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DAL\Context\AmdGpuMssql.cs" />
     <Compile Include="DAL\Context\ComputerMssql.cs" />
     <Compile Include="DAL\Context\ConString.cs" />
     <Compile Include="DAL\Context\CpuMssql.cs" />
+    <Compile Include="DAL\Context\GpuMssql.cs" />
     <Compile Include="DAL\Context\MemoryMssql.cs" />
     <Compile Include="DAL\Context\MotherboardMssql.cs" />
     <Compile Include="DAL\Context\NvideaGpuMssql.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="DAL\Interface\IAmdGpu.cs" />
     <Compile Include="DAL\Interface\IComputer.cs" />
     <Compile Include="DAL\Interface\ICpu.cs" />
+    <Compile Include="DAL\Interface\IGpu.cs" />
     <Compile Include="DAL\Interface\IMemory.cs" />
     <Compile Include="DAL\Interface\IMotherboard.cs" />
     <Compile Include="DAL\Interface\INvideaGpu.cs" />
@@ -159,6 +162,7 @@
     <Compile Include="DAL\Repository\AmdGpuRepo.cs" />
     <Compile Include="DAL\Repository\ComputerRepo.cs" />
     <Compile Include="DAL\Repository\CpuRepo.cs" />
+    <Compile Include="DAL\Repository\GpuRepo.cs" />
     <Compile Include="DAL\Repository\MemoryRepo.cs" />
     <Compile Include="DAL\Repository\MotherboardRepo.cs" />
     <Compile Include="DAL\Repository\NvideaGpuRepo.cs" />
@@ -177,6 +181,7 @@
     <Compile Include="DAL\Models\Storage.cs" />
     <Compile Include="DAL\Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DAL\ViewModels\CpuViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -195,6 +200,7 @@
     <Content Include="Views\Build\ShowBuild.cshtml" />
     <Content Include="Views\Build\MyBuilds.cshtml" />
     <Content Include="Views\Build\EditBuild.cshtml" />
+    <Content Include="Views\Part\Cpu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

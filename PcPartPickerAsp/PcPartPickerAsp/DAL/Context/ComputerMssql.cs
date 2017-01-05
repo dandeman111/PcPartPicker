@@ -24,21 +24,23 @@ namespace PcPartPickerAsp.DAL.Context
         public List<Computer> GetAll()
         {
             List<Computer> computers = new List<Computer>();
+            List<int> pcs = new List<int>();
             using (SqlConnection con = new SqlConnection(Constring))
             {
                 con.Open();
                 SqlCommand cmd = new SqlCommand("Select * from Computer left join User_computer on Computer.Computer_id = User_computer.Computer_id left join Computer_gpu on Computer_gpu.Computer_id = Computer.Computer_id", con);
                 SqlDataReader reader = cmd.ExecuteReader();
-                List<int> pcs = new List<int>();
+                
                 while (reader.Read())
                 {
                     pcs.Add(Convert.ToInt16(GetInt(reader["Computer_id"])));
 #warning als een waard null is returned hij 0
                 }
-                foreach (int pc in pcs)
-                {
-                    computers.Add(GetById(pc));
-                }
+                
+            }
+            foreach (int pc in pcs)
+            {
+                computers.Add(GetById(pc));
             }
             return computers;
         }
@@ -61,7 +63,7 @@ namespace PcPartPickerAsp.DAL.Context
                     int mbid = 0;
                     int memid = 0;
                     int stid = 0;
-                    List<string> owners = new List<string>();
+                    List<int> gpus = new List<int>();
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -71,7 +73,7 @@ namespace PcPartPickerAsp.DAL.Context
                         mbid = Convert.ToInt16(GetInt(reader["Motherboard_id"]));
                         memid = Convert.ToInt16(GetInt(reader["Memory_id"]));
                         stid = Convert.ToInt16(GetInt(reader["Storage_id"]));
-                        owners.Add(GetString(reader["Username"]));
+                        gpus.Add(Convert.ToInt16(GetInt(reader["Gpu_id"])));
                     }
                     
                     return new Computer(
@@ -80,7 +82,7 @@ namespace PcPartPickerAsp.DAL.Context
                         mbid,
                         memid,
                         stid,
-                        owners);
+                        gpus);
 
 
                 }

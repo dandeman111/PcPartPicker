@@ -14,7 +14,6 @@ namespace PcPartPickerAsp.DAL.Models
         public Memory Memory { get; set; }
         public Storage Storage { get; set; }
         public List<Gpu> Gpus { get; set; }
-        public List<User> Owner { get; set; }
         public int Price { get; set; }
 
         private CpuRepo cpuRepo= new CpuRepo(new CpuMssql());
@@ -22,26 +21,25 @@ namespace PcPartPickerAsp.DAL.Models
         private MemoryRepo memoryRepo = new MemoryRepo(new MemoryMssql());
         private StorageRepo storageRepo = new StorageRepo(new StorageMssql());
         private UserRepo user = new UserRepo(new UserMssql());
+        private GpuRepo gpuRepo = new GpuRepo(new GpuMssql());
 #warning nog geen gpu's gefixt
         //constructor
-        public Computer(int computerId, int cpuId, int motherboardId, int memoryId, int storageId,List<string> users  )
+        public Computer(int computerId, int cpuId, int motherboardId, int memoryId, int storageId,List<int> gpus )
         {
+            Gpus = new List<Gpu>();
             ComputerId = computerId;
-
             Cpu = cpuRepo.GetById(Convert.ToInt16(cpuId));
             Motherboard = motherboardRepo.GetById(motherboardId);
             Memory = memoryRepo.GetById(memoryId);
             Storage = storageRepo.GetById(storageId);
 
-            Owner = new List<User>();
-            foreach (var x in users)
+            foreach (int gpu in gpus)
             {
-                
+                if (gpuRepo.GetById(gpu) != null)
+                {
+                    Gpus.Add(gpuRepo.GetById(gpu));
+                }  
             }
-            
-
-
-
         }
 
     }
