@@ -27,7 +27,7 @@ namespace PcPartPickerAsp.DAL.Repository
 
         public List<Storage> GetAll()
         {
-            throw new NotImplementedException();
+            return Context.GetAll();
         }
 
         public void Update(Storage storage)

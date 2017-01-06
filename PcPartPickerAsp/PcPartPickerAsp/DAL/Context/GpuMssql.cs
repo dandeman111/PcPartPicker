@@ -42,5 +42,42 @@ namespace PcPartPickerAsp.DAL.Context
                 return ar.GetById(id);
             }
         }
+
+        public List<Gpu> GetAll()
+        {
+            List<Gpu> gpus = new List<Gpu>();
+            using (SqlConnection con = new SqlConnection(Constring))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Select * from Gpu g left join Amd a on g.Gpu_id = a.Gpu_id left join Nvidea n on g.Gpu_id = n.Gpu_id ", con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader["Crossfire"] is DBNull) // als het geen crossfire heeft moet het een nvidea zijn
+                    {
+                        gpus.Add(new NvideaGpu(Convert.ToString(reader["Name"]),
+                                                 Convert.ToInt16(reader["Gpu_id"]),
+                                                 Convert.ToInt16(reader["Clockspeed"]),
+                                                 Convert.ToInt16(reader["Vram"]),
+                                                 Convert.ToInt16(reader["Price"]),
+                                                 Convert.ToInt16(reader["Sli"]),
+                                                 Convert.ToBoolean(reader["Gsync"]),
+                                                 Convert.ToBoolean(reader["PhysX"])));
+                    }
+                    else
+                    {
+                        gpus.Add(new AmdGpu(Convert.ToInt16(reader["Gpu_id"]),
+                         Convert.ToInt16(reader["Clockspeed"]),
+                         Convert.ToInt16(reader["Vram"]),
+                         Convert.ToInt16(reader["Price"]),
+                         Convert.ToString(reader["Name"]),
+                         Convert.ToInt16(reader["Crossfire"])));
+                    }
+                }
+
+            }
+            return gpus;
+        }
     }
 }

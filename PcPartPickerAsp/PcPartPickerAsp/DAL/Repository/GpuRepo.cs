@@ -20,5 +20,10 @@ namespace PcPartPickerAsp.DAL.Repository
         {
             return Context.GetById(id);
         }
+
+        public List<Gpu> GetAll()
+        {
+            return Context.GetAll();
+        }
     }
 }

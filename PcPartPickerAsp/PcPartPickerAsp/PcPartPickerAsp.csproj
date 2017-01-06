@@ -168,6 +168,10 @@
     <Compile Include="DAL\Repository\NvideaGpuRepo.cs" />
     <Compile Include="DAL\Repository\StorageRepo.cs" />
     <Compile Include="DAL\Repository\UserRepo.cs" />
+    <Compile Include="DAL\ViewModels\GpuViewModel.cs" />
+    <Compile Include="DAL\ViewModels\MemoryViewModel.cs" />
+    <Compile Include="DAL\ViewModels\MotherboardViewModel.cs" />
+    <Compile Include="DAL\ViewModels\StorageViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,6 +205,10 @@
     <Content Include="Views\Build\MyBuilds.cshtml" />
     <Content Include="Views\Build\EditBuild.cshtml" />
     <Content Include="Views\Part\Cpu.cshtml" />
+    <Content Include="Views\Part\Motherboard.cshtml" />
+    <Content Include="Views\Part\Memory.cshtml" />
+    <Content Include="Views\Part\Storage.cshtml" />
+    <Content Include="Views\Part\Gpu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

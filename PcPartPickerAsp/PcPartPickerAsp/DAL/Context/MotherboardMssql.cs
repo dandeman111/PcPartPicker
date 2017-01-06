@@ -57,9 +57,9 @@ namespace PcPartPickerAsp.DAL.Context
                 {
                     motherboards.Add(new Motherboard(
                         Convert.ToInt16(reader["Motherboard_id"]),
-                        Convert.ToString("Chipset"),
-                        Convert.ToString("Socket"),
-                        Convert.ToInt16("Price"),
+                        Convert.ToString(reader["Chipset"]),
+                        Convert.ToString(reader["Socket"]),
+                        Convert.ToInt16(reader["Price"]),
                         Convert.ToString(reader["Name"])));
                 }
 
