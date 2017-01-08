@@ -35,6 +35,7 @@
                                         @Html.AntiForgeryToken()
                                         @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
                                         @Html.Hidden("gpuId", c.GpuId)
+                                        @Html.Hidden("currentGpu",Model.CurrentGpu)
                                         <input type="submit" value="Pick" class="btn btn-default" />
                                     }
                                 </td>

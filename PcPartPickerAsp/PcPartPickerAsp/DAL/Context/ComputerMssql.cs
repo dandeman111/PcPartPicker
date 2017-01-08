@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,10 +11,40 @@ namespace PcPartPickerAsp.DAL.Context
 {
     public class ComputerMssql : ConString, IComputer
     {
-        public void Add(Computer computer)
+        public void Add(Computer computer, string username)
         {
-            throw new NotImplementedException();
+            using (var conn = new SqlConnection(Constring))
+            using (var command = new SqlCommand("AddComputerTest", conn)
+            {
+                CommandType = CommandType.StoredProcedure
+            })
+            {
+                using (var table = new DataTable())
+                {
+                    //table.Columns.Add("Gpu_id", typeof(int));
+                    //table.Columns.Add("Amount", typeof(int));
+
+                    //foreach (Gpu gp in computer.Gpus)
+                    //{
+                    //    table.Rows.Add(gp.GpuId, 1);
+                    //}
+
+                    //var pList = new SqlParameter("@gpus", SqlDbType.Structured);
+                    //pList.TypeName = "dbo.gpus";
+                    //pList.Value = table;
+
+                    //command.Parameters.AddWithValue("@Gpus", pList);
+                    command.Parameters.AddWithValue("@Cpu_id", computer.Cpu.CpuId);
+                    command.Parameters.AddWithValue("@Motherboard_id", computer.Motherboard.MotherboardId);
+                    command.Parameters.AddWithValue("@Memory_id", computer.Memory.MemoryId);
+                    command.Parameters.AddWithValue("@Storage_id", computer.Storage.StorageId);
+                    command.Parameters.AddWithValue("@Username", username);
+
+                    conn.Open();
+                    command.ExecuteNonQuery();
+                }
 #warning ik heb hiervoor een stored procedure aangemaakt
+            }
         }
 
         public void Delete(Computer computer)
@@ -105,10 +136,13 @@ namespace PcPartPickerAsp.DAL.Context
                     cmd.Parameters.AddWithValue("@cpuid", computer.Cpu.CpuId);
 
                     cmd.ExecuteNonQuery();
-
-
                 }
             }
+
+            
+
+
+
         }
     }
 }

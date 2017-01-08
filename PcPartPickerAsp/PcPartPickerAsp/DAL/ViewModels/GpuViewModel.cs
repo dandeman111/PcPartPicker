@@ -10,11 +10,14 @@ namespace PcPartPickerAsp.DAL.ViewModels
     {
         public Computer CurrentBuild { get; private set; }
         public List<Gpu> AllGpus { get; private set; }
+        public int CurrentGpu { get; private set; }
 
-        public GpuViewModel(Computer currentBuild, List<Gpu> allGpus)
+        public GpuViewModel(Computer currentBuild, List<Gpu> allGpus, int currentGpu)
         {
             CurrentBuild = currentBuild;
+            CurrentGpu = currentGpu;
             AllGpus = new List<Gpu>();
             AllGpus.AddRange(allGpus);
         }
+    }
 }

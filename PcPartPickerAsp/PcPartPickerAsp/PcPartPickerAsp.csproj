@@ -209,6 +209,11 @@
     <Content Include="Views\Part\Memory.cshtml" />
     <Content Include="Views\Part\Storage.cshtml" />
     <Content Include="Views\Part\Gpu.cshtml" />
+    <Content Include="Views\Build\NewBuild.cshtml" />
+    <Content Include="Views\Part\AddCpu.cshtml" />
+    <Content Include="Views\Part\AddMotherboard.cshtml" />
+    <Content Include="Views\Part\AddMemory.cshtml" />
+    <Content Include="Views\Part\AddStorage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

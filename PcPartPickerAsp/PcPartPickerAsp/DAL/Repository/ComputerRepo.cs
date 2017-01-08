@@ -16,9 +16,9 @@ namespace PcPartPickerAsp.DAL.Repository
         {
             Context = computerContext;
         }
-        public void Add(Computer computer)
+        public void Add(Computer computer, string username)
         {
-            throw new NotImplementedException();
+            Context.Add(computer, username);
         }
 
         public Computer GetById(int id)

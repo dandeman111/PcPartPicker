@@ -23,7 +23,7 @@
                 <tbody id="myTable">
                     @foreach (Motherboard m in @Model.AllMotherboards)
                     {
-                        if (m.Socket == Model.CurrentBuild.Cpu.Socket) //kijkt of het moederbord compitabel is de Cpu
+                        if (Model.CurrentBuild.Cpu == null||m.Socket == Model.CurrentBuild.Cpu.Socket) //kijkt of het moederbord compitabel is de Cpu
                         {
                             <tr>
                                 <td>@m.Name</td>
@@ -31,10 +31,9 @@
                                 <td>@m.Chipset</td>
                                 <td>@m.Price</td>
                                 <td>
-                                    @using (Html.BeginForm("EditMotherBoard", "Build"))
+                                    @using (Html.BeginForm("AddMotherboard", "Build"))
                                     {
                                         @Html.AntiForgeryToken()
-                                        @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
                                         @Html.Hidden("motherboardId", m.MotherboardId)
                                         <input type="submit" value="Pick" class="btn btn-default" />
                                     }
@@ -51,3 +50,6 @@
         </div>
     </div>
 </div>
+
+
+

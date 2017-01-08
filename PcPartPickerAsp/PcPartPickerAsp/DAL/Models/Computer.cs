@@ -20,7 +20,6 @@ namespace PcPartPickerAsp.DAL.Models
         private MotherboardRepo motherboardRepo = new MotherboardRepo(new MotherboardMssql());
         private MemoryRepo memoryRepo = new MemoryRepo(new MemoryMssql());
         private StorageRepo storageRepo = new StorageRepo(new StorageMssql());
-        private UserRepo user = new UserRepo(new UserMssql());
         private GpuRepo gpuRepo = new GpuRepo(new GpuMssql());
 #warning nog geen gpu's gefixt
         //constructor
@@ -40,6 +39,12 @@ namespace PcPartPickerAsp.DAL.Models
                     Gpus.Add(gpuRepo.GetById(gpu));
                 }  
             }
+        }
+
+        public Computer()
+        {
+            Gpus = new List<Gpu>();
+
         }
 
     }
