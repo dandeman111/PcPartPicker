@@ -7,13 +7,13 @@ using PcPartPickerAsp.DAL.Models;
 
 namespace PcPartPickerAsp.DAL.Context
 {
-    public class UserMssql:ConString, IUser
+    public class UserMssql : ConString, IUser
     {
         public void Add(User user)
         {
-            using (SqlConnection con = new SqlConnection(Constring))
+            using (var con = new SqlConnection(Constring))
             {
-                using (SqlCommand cmd = new SqlCommand("Insert into[User]Values(@Username, @Password, @Email)", con))
+                using (var cmd = new SqlCommand("Insert into[User]Values(@Username, @Password, @Email)", con))
                 {
                     cmd.Parameters.Add("@Username", SqlDbType.VarChar).Value = user.Username;
                     cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = user.Password;
@@ -27,21 +27,25 @@ namespace PcPartPickerAsp.DAL.Context
 
         public User GetByUsername(string username)
         {
-            using (SqlConnection con = new SqlConnection(Constring))
+            using (var con = new SqlConnection(Constring))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from [User] left join[User_computer]on User_computer.Username = [User].Username where [User].Username = @Username", con))
+                using (
+                    var cmd =
+                        new SqlCommand(
+                            "Select * from [User] left join[User_computer]on User_computer.Username = [User].Username where [User].Username = @Username",
+                            con))
                 {
                     string un = null;
                     string pw = null;
                     string em = null;
-                    List<int> pcs = new List<int>();
+                    var pcs = new List<int>();
                     cmd.Parameters.AddWithValue("@Username", username);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                         un = Convert.ToString(reader["Username"]);
+                        un = Convert.ToString(reader["Username"]);
                         pw = Convert.ToString(reader["Password"]);
                         em = Convert.ToString(reader["Email"]);
                         pcs.Add(Convert.ToInt16(GetInt(reader["Computer_id"])));
@@ -52,34 +56,27 @@ namespace PcPartPickerAsp.DAL.Context
                         pw,
                         em,
                         pcs
-                        );
-
-
+                    );
                 }
             }
         }
 
         public List<User> GetAll()
         {
-            List<User> users = new List<User>();
-            using (SqlConnection con = new SqlConnection(Constring))
+            var users = new List<User>();
+            using (var con = new SqlConnection(Constring))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Select * from [User] left join[User_computer]on User_computer.Username = [User].Username", con);
-                SqlDataReader reader = cmd.ExecuteReader();
-                
-                List<string> usernames = new List<string>();
+                var cmd =
+                    new SqlCommand(
+                        "Select * from [User] left join[User_computer]on User_computer.Username = [User].Username", con);
+                var reader = cmd.ExecuteReader();
+
+                var usernames = new List<string>();
                 while (reader.Read())
-                {
                     usernames.Add(Convert.ToString(reader["Username"]));
-
-                }
-                foreach (string un in usernames)
-                {
-                   users.Add(GetByUsername(un));
-                }
-
-
+                foreach (var un in usernames)
+                    users.Add(GetByUsername(un));
             }
             return users;
         }

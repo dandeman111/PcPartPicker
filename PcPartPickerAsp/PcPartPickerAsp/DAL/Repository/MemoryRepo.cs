@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
@@ -9,12 +7,13 @@ namespace PcPartPickerAsp.DAL.Repository
 {
     public class MemoryRepo
     {
-        public IMemory Context { get; private set; }
-
         public MemoryRepo(IMemory memoryContext)
         {
             Context = memoryContext;
         }
+
+        public IMemory Context { get; }
+
         public void Add(Memory memory)
         {
             throw new NotImplementedException();

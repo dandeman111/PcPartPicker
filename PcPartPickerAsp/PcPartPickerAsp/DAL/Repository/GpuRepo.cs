@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
@@ -9,12 +6,12 @@ namespace PcPartPickerAsp.DAL.Repository
 {
     public class GpuRepo
     {
-        public IGpu Context { get; private set; }
-
         public GpuRepo(IGpu contextGpu)
         {
             Context = contextGpu;
         }
+
+        public IGpu Context { get; }
 
         public Gpu GetById(int id)
         {

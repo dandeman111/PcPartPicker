@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
@@ -9,12 +7,13 @@ namespace PcPartPickerAsp.DAL.Repository
 {
     public class NvideaGpuRepo
     {
-        public INvideaGpu Context { get; private set; }
-
         public NvideaGpuRepo(INvideaGpu nvideaGpuContext)
         {
             Context = nvideaGpuContext;
         }
+
+        public INvideaGpu Context { get; }
+
         public void Add(NvideaGpu nvideaGpu)
         {
             throw new NotImplementedException();

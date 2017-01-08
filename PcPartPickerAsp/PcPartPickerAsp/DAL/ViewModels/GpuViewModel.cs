@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using PcPartPickerAsp.DAL.Models;
 
 namespace PcPartPickerAsp.DAL.ViewModels
 {
     public class GpuViewModel
     {
-        public Computer CurrentBuild { get; private set; }
-        public List<Gpu> AllGpus { get; private set; }
-        public int CurrentGpu { get; private set; }
-
         public GpuViewModel(Computer currentBuild, List<Gpu> allGpus, int currentGpu)
         {
             CurrentBuild = currentBuild;
@@ -19,5 +12,9 @@ namespace PcPartPickerAsp.DAL.ViewModels
             AllGpus = new List<Gpu>();
             AllGpus.AddRange(allGpus);
         }
+
+        public Computer CurrentBuild { get; private set; }
+        public List<Gpu> AllGpus { get; }
+        public int CurrentGpu { get; private set; }
     }
 }

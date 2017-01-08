@@ -7,17 +7,17 @@ using PcPartPickerAsp.DAL.Models;
 
 namespace PcPartPickerAsp.DAL.Context
 {
-    public class AmdGpuMssql:ConString, IAmdGpu 
+    public class AmdGpuMssql : ConString, IAmdGpu
     {
         public void Add(AmdGpu amdGpu)
         {
-            using (SqlConnection con = new SqlConnection(Constring))
+            using (var con = new SqlConnection(Constring))
             {
-                using (SqlCommand cmd = new SqlCommand("AddAmdGpu", con))
+                using (var cmd = new SqlCommand("AddAmdGpu", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add("@Clockspeed", SqlDbType.Int).Value =amdGpu.Clockspeed ;
+                    cmd.Parameters.Add("@Clockspeed", SqlDbType.Int).Value = amdGpu.Clockspeed;
                     cmd.Parameters.Add("@Vram", SqlDbType.Int).Value = amdGpu.Vram;
                     cmd.Parameters.Add("@Price", SqlDbType.Int).Value = amdGpu.Price;
                     cmd.Parameters.Add("@Name", SqlDbType.VarChar).Value = amdGpu.Name;
@@ -27,33 +27,29 @@ namespace PcPartPickerAsp.DAL.Context
                     cmd.ExecuteNonQuery();
                 }
             }
-
         }
 
         public AmdGpu GetById(int id)
         {
-            using (SqlConnection con = new SqlConnection(Constring))
+            using (var con = new SqlConnection(Constring))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from gpu Join Amd on Amd.Gpu_id = Gpu.Gpu_id Where Gpu.Gpu_id = @GpuId", con))
+                using (
+                    var cmd =
+                        new SqlCommand(
+                            "Select * from gpu Join Amd on Amd.Gpu_id = Gpu.Gpu_id Where Gpu.Gpu_id = @GpuId", con))
                 {
-                    
                     cmd.Parameters.AddWithValue("@GpuId", id);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();
                     if (reader.Read())
-                    {
                         return new AmdGpu(Convert.ToInt16(reader["Gpu_id"]),
-                         Convert.ToInt16(reader["Clockspeed"]),
-                         Convert.ToInt16(reader["Vram"]),
-                         Convert.ToInt16(reader["Price"]),
-                         Convert.ToString(reader["Name"]),
-                         Convert.ToInt16(reader["Crossfire"]));
-                    }
-                    else { return null;}
-                   
-
-
+                            Convert.ToInt16(reader["Clockspeed"]),
+                            Convert.ToInt16(reader["Vram"]),
+                            Convert.ToInt16(reader["Price"]),
+                            Convert.ToString(reader["Name"]),
+                            Convert.ToInt16(reader["Crossfire"]));
+                    return null;
                 }
             }
         }

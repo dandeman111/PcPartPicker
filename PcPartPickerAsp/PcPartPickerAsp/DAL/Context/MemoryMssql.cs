@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
 namespace PcPartPickerAsp.DAL.Context
 {
-    public class MemoryMssql: ConString, IMemory
+    public class MemoryMssql : ConString, IMemory
     {
         public void Add(Memory memory)
         {
@@ -17,55 +15,41 @@ namespace PcPartPickerAsp.DAL.Context
 
         public Memory GetById(int id)
         {
-            
-            using (SqlConnection con = new SqlConnection(Constring))
+            using (var con = new SqlConnection(Constring))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("Select * from Memory where Memory_id = @id", con))
+                using (var cmd = new SqlCommand("Select * from Memory where Memory_id = @id", con))
                 {
-
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    var reader = cmd.ExecuteReader();
 
                     if (reader.Read())
-                    {
                         return new Memory(Convert.ToInt16(reader["Memory_id"]),
-                          Convert.ToInt16(reader["Clockspeed"]),
-                          Convert.ToString(reader["Type"]),
-                          Convert.ToInt16(reader["Price"]),
-                          Convert.ToString(reader["Name"]));
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                    
-                    
-
-
+                            Convert.ToInt16(reader["Clockspeed"]),
+                            Convert.ToString(reader["Type"]),
+                            Convert.ToInt16(reader["Price"]),
+                            Convert.ToString(reader["Name"]));
+                    return null;
                 }
             }
         }
 
         public List<Memory> GetAll()
         {
-            List<Memory> mems = new List<Memory>();
-            using (SqlConnection con = new SqlConnection(Constring))
+            var mems = new List<Memory>();
+            using (var con = new SqlConnection(Constring))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("select * from [Memory] ", con);
-                SqlDataReader reader = cmd.ExecuteReader();
+                var cmd = new SqlCommand("select * from [Memory] ", con);
+                var reader = cmd.ExecuteReader();
 
                 while (reader.Read())
-                {
                     mems.Add(new Memory(Convert.ToInt16(reader["Memory_id"]),
                         Convert.ToInt16(reader["Clockspeed"]),
                         Convert.ToString(reader["Type"]),
                         Convert.ToInt16(reader["Price"]),
                         Convert.ToString(reader["Name"])));
-                }
-
             }
             return mems;
         }

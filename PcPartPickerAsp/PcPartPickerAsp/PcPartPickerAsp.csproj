@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BuildController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PartController.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Views\Part\AddMotherboard.cshtml" />
     <Content Include="Views\Part\AddMemory.cshtml" />
     <Content Include="Views\Part\AddStorage.cshtml" />
+    <Content Include="Views\Error\MissingParts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

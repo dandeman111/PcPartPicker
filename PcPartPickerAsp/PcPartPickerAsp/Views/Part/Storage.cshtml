@@ -1,5 +1,4 @@
-﻿@using PcPartPickerAsp.DAL.Models
-@model PcPartPickerAsp.DAL.ViewModels.StorageViewModel
+﻿@model PcPartPickerAsp.DAL.ViewModels.StorageViewModel
 @{
     ViewBag.Title = "Storage";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,34 +11,33 @@
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Clock speed</th>
-                        <th>Type</th>
-                        <th>Price</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Clock speed</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                </tr>
                 </thead>
 
                 <tbody id="myTable">
-                    @foreach (Storage s in @Model.AllStorages)
-                    {
-
-                        <tr>
-                            <td>@s.Name</td>
-                            <td>@s.Interface</td>
-                            <td>@s.Speed</td>
-                            <td>@s.Price</td>
-                            <td>
-                                @using (Html.BeginForm("EditStorage", "Build"))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
-                                    @Html.Hidden("storageId", s.StorageId)
-                                    <input type="submit" value="Pick" class="btn btn-default" />
-                                }
-                            </td>
-                        </tr>
-                    }
+                @foreach (var s in Model.AllStorages)
+                {
+                    <tr>
+                        <td>@s.Name</td>
+                        <td>@s.Interface</td>
+                        <td>@s.Speed</td>
+                        <td>@s.Price</td>
+                        <td>
+                            @using (Html.BeginForm("EditStorage", "Build"))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
+                                @Html.Hidden("storageId", s.StorageId)
+                                <input type="submit" value="Pick" class="btn btn-default"/>
+                            }
+                        </td>
+                    </tr>
+                }
 
 
                 </tbody>

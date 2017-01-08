@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
@@ -9,12 +7,13 @@ namespace PcPartPickerAsp.DAL.Repository
 {
     public class StorageRepo
     {
-        public IStorage Context { get; private set; }
-
         public StorageRepo(IStorage storageContext)
         {
             Context = storageContext;
         }
+
+        public IStorage Context { get; }
+
         public void Add(Storage storage)
         {
             throw new NotImplementedException();

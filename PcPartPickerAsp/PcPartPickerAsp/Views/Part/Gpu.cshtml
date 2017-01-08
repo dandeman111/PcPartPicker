@@ -1,5 +1,4 @@
-﻿@using PcPartPickerAsp.DAL.Models
-@model PcPartPickerAsp.DAL.ViewModels.GpuViewModel
+﻿@model PcPartPickerAsp.DAL.ViewModels.GpuViewModel
 @{
     ViewBag.Title = "Gpu";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,36 +11,34 @@
         <div class="table-responsive">
             <table class="table table-hover">
                 <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Clock speed</th>
-                        <th>Vram</th>
-                        <th>Price</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Clock speed</th>
+                    <th>Vram</th>
+                    <th>Price</th>
+                </tr>
                 </thead>
 
                 <tbody id="myTable">
-                    @foreach (Gpu c in @Model.AllGpus)
-                    {
-                        
-                            <tr>
-                                <td>@c.Name</td>
-                                <td>@c.Clockspeed</td>
-                                <td>@c.Vram</td>
-                                <td>@c.Price</td>
-                                <td>
-                                    @using (Html.BeginForm("EditGpu", "Build"))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
-                                        @Html.Hidden("gpuId", c.GpuId)
-                                        @Html.Hidden("currentGpu",Model.CurrentGpu)
-                                        <input type="submit" value="Pick" class="btn btn-default" />
-                                    }
-                                </td>
-                            </tr>
-                        
-                    }
+                @foreach (var c in Model.AllGpus)
+                {
+                    <tr>
+                        <td>@c.Name</td>
+                        <td>@c.Clockspeed</td>
+                        <td>@c.Vram</td>
+                        <td>@c.Price</td>
+                        <td>
+                            @using (Html.BeginForm("EditGpu", "Build"))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("computerId", Model.CurrentBuild.ComputerId)
+                                @Html.Hidden("gpuId", c.GpuId)
+                                @Html.Hidden("currentGpu", Model.CurrentGpu)
+                                <input type="submit" value="Pick" class="btn btn-default"/>
+                            }
+                        </td>
+                    </tr>
+                }
 
                 </tbody>
             </table>

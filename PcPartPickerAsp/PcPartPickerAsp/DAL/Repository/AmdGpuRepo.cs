@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using PcPartPickerAsp.DAL.Interface;
 using PcPartPickerAsp.DAL.Models;
 
@@ -9,12 +7,13 @@ namespace PcPartPickerAsp.DAL.Repository
 {
     public class AmdGpuRepo
     {
-        public IAmdGpu Context { get; private set; }
-
         public AmdGpuRepo(IAmdGpu amdGpuContext)
         {
             Context = amdGpuContext;
         }
+
+        public IAmdGpu Context { get; }
+
         public void Add(AmdGpu amdGpu)
         {
             Context.Add(amdGpu);
